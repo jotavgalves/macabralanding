@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#0b0908">
+  <title>Macabra CMS</title>
+  <link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body>
+  <section class="login-view" id="loginView">
+    <form class="login-card" id="loginForm">
+      <div class="login-mark">MACABRA</div>
+      <div class="eyebrow">GTRZ EVENTOS · CMS</div>
+      <h1>Controle total da landing.</h1>
+      <p>Conteúdo, imagens, ingressos, DJs, seções, SEO e identidade visual em um único painel.</p>
+      <label class="field"><span>Senha administrativa</span><input id="password" type="password" autocomplete="current-password" required></label>
+      <button class="btn primary wide" type="submit">Entrar no painel</button>
+      <div class="form-error" id="loginError"></div>
+    </form>
+  </section>
+
+  <div class="app hidden" id="appView">
+    <aside class="sidebar">
+      <div class="sidebar-brand"><strong>MACABRA</strong><span>CONTROL</span></div>
+      <div class="workspace"><small>WORKSPACE</small><b>Halloween 2026</b><span id="workspaceStatus">Carregando…</span></div>
+      <nav class="side-nav">
+        <a href="#overview" class="active"><span>01</span>Visão geral</a>
+        <a href="#event"><span>02</span>Evento</a>
+        <a href="#visual"><span>03</span>Identidade</a>
+        <a href="#tickets"><span>04</span>Ingressos</a>
+        <a href="#djs"><span>05</span>DJs</a>
+        <a href="#music"><span>06</span>Música</a>
+        <a href="#content"><span>07</span>Textos</a>
+        <a href="#faq"><span>08</span>FAQ</a>
+        <a href="#sections"><span>09</span>Seções</a>
+        <a href="#links"><span>10</span>Links & SEO</a>
+        <a href="#advanced"><span>11</span>Avançado</a>
+      </nav>
+      <div class="side-bottom"><a class="btn subtle wide" href="/" target="_blank">Abrir landing ↗</a><button class="logout" id="logoutBtn">Sair</button></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div><div class="crumb">MACABRA / <span id="currentSection">VISÃO GERAL</span></div><div class="save-state" id="saveState">Tudo salvo</div></div>
+        <div class="top-actions"><button class="btn subtle" id="reloadBtn">Recarregar</button><button class="btn primary" id="saveBtn">Salvar e publicar</button></div>
+      </header>
+
+      <div class="page">
+        <section class="panel-section" id="overview">
+          <div class="section-title"><div><span class="eyebrow">PAINEL</span><h2>Visão geral</h2><p>O estado atual da Macabra em um único lugar.</p></div></div>
+          <div class="metrics"><article><small>INGRESSOS</small><strong id="metricTickets">0</strong><span id="metricTicketsSub">configurados</span></article><article><small>DJs</small><strong id="metricDjs">0</strong><span id="metricDjsSub">publicados</span></article><article><small>SEÇÕES</small><strong id="metricSections">0</strong><span>ativas</span></article><article><small>DRIVE</small><strong class="metric-word" id="metricDrive">—</strong><span>armazenamento</span></article></div>
+          <div class="overview-grid"><article class="card hero-admin"><div><span class="eyebrow">EVENTO</span><h3 id="overviewName">MACABRA</h3><p id="overviewMeta"></p></div><a href="#event">Editar evento →</a></article><article class="card"><div class="card-head"><div><span class="eyebrow">MÍDIA</span><h3>Google Drive</h3></div><span class="status-pill" id="drivePill">Verificando</span></div><p id="driveHelp">O Drive armazena as imagens enviadas pelo painel.</p><div class="inline-actions"><a class="btn subtle" id="connectDriveBtn" href="/api/admin/google/connect">Conectar Drive</a><button class="btn danger" id="disconnectDriveBtn" type="button" hidden>Desconectar</button></div></article></div>
+        </section>
+
+        <section class="panel-section" id="event">
+          <div class="section-title"><div><span class="eyebrow">BASE</span><h2>Evento</h2><p>Informações centrais reutilizadas em toda a landing.</p></div></div>
+          <div class="card form-card"><div class="grid2"><label class="field"><span>Nome do evento</span><input data-path="event.name"></label><label class="field"><span>Assinatura superior</span><input data-path="event.eyebrow"></label><label class="field"><span>Data e hora</span><input data-path="event.date" type="datetime-local"></label><label class="field"><span>Data exibida</span><input data-path="event.dateLabel"></label><label class="field"><span>Horário exibido</span><input data-path="event.timeLabel"></label><label class="field"><span>Cidade</span><input data-path="event.city"></label><label class="field"><span>Local</span><input data-path="event.venue"></label><label class="field"><span>Link Google Maps</span><input data-path="event.mapLink" placeholder="https://maps.app.goo.gl/..."></label></div><label class="field"><span>Endereço</span><textarea data-path="event.address"></textarea></label><label class="field"><span>URL de embed do mapa</span><input data-path="event.mapEmbedUrl" placeholder="Opcional; se vazio, o site usa o endereço."></label></div>
+        </section>
+
+        <section class="panel-section" id="visual">
+          <div class="section-title"><div><span class="eyebrow">DIREÇÃO DE ARTE</span><h2>Identidade visual</h2><p>Troque peças sem mexer em código. Os arquivos enviados ficam no Google Drive.</p></div></div>
+          <div class="media-grid" id="mediaGrid"></div>
+          <div class="card form-card"><div class="card-head"><div><span class="eyebrow">PALETA</span><h3>Cores da experiência</h3></div><button class="btn subtle" id="resetColorsBtn" type="button">Restaurar padrão</button></div><div class="color-grid"><label class="color-field"><span>Primária</span><input type="color" data-path="branding.primary"><input class="hex" data-color-text="branding.primary"></label><label class="color-field"><span>Secundária</span><input type="color" data-path="branding.secondary"><input class="hex" data-color-text="branding.secondary"></label><label class="color-field"><span>Fundo</span><input type="color" data-path="branding.background"><input class="hex" data-color-text="branding.background"></label><label class="color-field"><span>Papel</span><input type="color" data-path="branding.paper"><input class="hex" data-color-text="branding.paper"></label><label class="color-field"><span>Texto</span><input type="color" data-path="branding.text"><input class="hex" data-color-text="branding.text"></label></div></div>
+        </section>
+
+        <section class="panel-section" id="tickets">
+          <div class="section-title split-title"><div><span class="eyebrow">VENDAS</span><h2>Ingressos</h2><p>Crie quantos lotes e tipos de ingresso precisar.</p></div><button class="btn primary" id="addTicketBtn">+ Novo ingresso</button></div>
+          <div class="collection" id="ticketEditor"></div>
+        </section>
+
+        <section class="panel-section" id="djs">
+          <div class="section-title split-title"><div><span class="eyebrow">LINE-UP</span><h2>DJs & atrações</h2><p>Adicione, remova, reordene, publique e troque fotos sem deploy.</p></div><button class="btn primary" id="addDjBtn">+ Adicionar DJ</button></div>
+          <div class="collection" id="djEditor"></div>
+        </section>
+
+        <section class="panel-section" id="music">
+          <div class="section-title"><div><span class="eyebrow">PISTA</span><h2>Música</h2><p>Controle os gêneros exibidos na landing.</p></div></div>
+          <div class="card form-card"><label class="field"><span>Gêneros · um por linha</span><textarea id="genresEditor" class="tall"></textarea></label></div>
+        </section>
+
+        <section class="panel-section" id="content">
+          <div class="section-title"><div><span class="eyebrow">COPY</span><h2>Textos da landing</h2><p>Edite português e espanhol lado a lado por bloco.</p></div></div>
+          <div class="language-tabs"><button class="active" data-copy-lang="pt">Português</button><button data-copy-lang="es">Español</button></div>
+          <div class="card form-card" id="copyEditor"></div>
+        </section>
+
+        <section class="panel-section" id="faq">
+          <div class="section-title split-title"><div><span class="eyebrow">SUPORTE</span><h2>FAQ</h2><p>Perguntas ilimitadas em PT e ES.</p></div><button class="btn primary" id="addFaqBtn">+ Nova pergunta</button></div>
+          <div class="collection" id="faqEditor"></div>
+        </section>
+
+        <section class="panel-section" id="sections">
+          <div class="section-title"><div><span class="eyebrow">ESTRUTURA</span><h2>Seções</h2><p>Escolha o que aparece e em qual ordem.</p></div></div>
+          <div class="card"><div class="section-list" id="sectionEditor"></div></div>
+        </section>
+
+        <section class="panel-section" id="links">
+          <div class="section-title"><div><span class="eyebrow">DISTRIBUIÇÃO</span><h2>Links & SEO</h2><p>Contato, redes e aparência no Google/compartilhamento.</p></div></div>
+          <div class="card form-card"><div class="grid2"><label class="field"><span>Instagram</span><input data-path="links.instagram"></label><label class="field"><span>WhatsApp</span><input data-path="links.whatsapp" placeholder="5581... ou https://wa.me/..."></label><label class="field"><span>Email</span><input data-path="links.email" type="email"></label><div></div><label class="field"><span>Título SEO</span><input data-path="seo.title"></label><label class="field"><span>Título ao compartilhar</span><input data-path="seo.shareTitle"></label></div><label class="field"><span>Descrição SEO</span><textarea data-path="seo.description"></textarea></label><label class="field"><span>Descrição ao compartilhar</span><textarea data-path="seo.shareDescription"></textarea></label></div>
+        </section>
+
+        <section class="panel-section" id="advanced">
+          <div class="section-title"><div><span class="eyebrow">POWER USER</span><h2>Avançado</h2><p>Backup integral da configuração e edição JSON.</p></div></div>
+          <div class="card form-card"><label class="field"><span>Configuração JSON</span><textarea id="jsonEditor" class="code"></textarea></label><div class="inline-actions"><button class="btn subtle" id="syncJsonBtn">Atualizar JSON</button><button class="btn subtle" id="applyJsonBtn">Aplicar JSON</button><button class="btn subtle" id="downloadBackupBtn">Baixar backup</button></div></div>
+        </section>
+      </div>
+
+      <div class="mobile-save"><button class="btn primary wide" id="saveMobileBtn">Salvar e publicar</button></div>
+    </main>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="/admin/admin.js" defer></script>
+</body>
+</html>
