@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt-BR" data-lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#090706">
+  <title>Macabra — Halloween GTRZ</title>
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a href="#top" class="gtrz-word">GTRZ</a>
+      <nav class="site-nav">
+        <a href="#manifesto" data-copy="navExperience">Experiência</a>
+        <a href="#sound" data-copy="navSound">Música</a>
+        <a href="#djs" data-copy="navDjs">DJs</a>
+        <a href="#venue" data-copy="navVenue">Local</a>
+        <div class="lang-switch"><button type="button" data-lang="pt">PT</button><button type="button" data-lang="es">ES</button></div>
+        <a class="nav-buy" href="#tickets" data-copy="navTickets">Ingressos</a>
+      </nav>
+    </div>
+    <div class="scroll-progress"><span id="scrollProgress"></span></div>
+  </header>
+
+  <main id="top">
+    <section class="hero content-section" data-section="hero">
+      <div class="hero-image" id="heroImage"></div>
+      <div class="hero-overlay"></div>
+      <div class="wrap hero-grid">
+        <div class="hero-copy reveal">
+          <div class="eyebrow" id="heroEyebrow"></div>
+          <img class="event-logo" id="eventLogo" alt="Macabra" hidden>
+          <div class="macabra-word" id="eventWord">MACABRA</div>
+          <h1 class="display" id="heroTitle"></h1>
+          <p id="heroCopy"></p>
+          <div class="hero-actions"><a class="btn hot" href="#tickets" id="heroCta"></a><a class="btn ghost" href="#venue" data-copy="navVenue">Local</a></div>
+        </div>
+        <aside class="poster-card reveal">
+          <img id="posterImage" alt="Macabra" hidden>
+          <div class="poster-fallback" id="posterFallback"><span>31</span><small>OUTUBRO</small><strong>MACABRA</strong></div>
+          <div class="meta-grid"><div><small>DATA</small><b id="metaDate"></b></div><div><small>HORÁRIO</small><b id="metaTime"></b></div><div><small>LOCAL</small><b id="metaVenue"></b></div></div>
+        </aside>
+      </div>
+    </section>
+
+    <div class="ticker"><div class="ticker-track" id="tickerTrack"></div></div>
+
+    <section class="manifesto content-section" id="manifesto" data-section="manifesto">
+      <div class="wrap two-col"><div class="reveal"><div class="kicker" id="manifestoKicker"></div><h2 class="display" id="manifestoTitle"></h2></div><div class="copy-block reveal"><p id="manifestoCopy"></p><div class="rule"></div><div class="tags"><span>HALLOWEEN</span><span>LATINIDAD</span><span>PISTA</span><span>RECIFE</span></div></div></div>
+    </section>
+
+    <section class="sound content-section paper" id="sound" data-section="sound">
+      <div class="wrap sound-grid"><div class="reveal"><div class="kicker" id="soundKicker"></div><h2 class="display" id="soundTitle"></h2><p id="soundCopy"></p><div class="genres" id="genres"></div></div><div class="ritual-orb reveal" aria-hidden="true"><span>☠</span></div></div>
+    </section>
+
+    <section class="djs content-section" id="djs" data-section="djs">
+      <div class="wrap"><div class="section-head reveal"><div><div class="kicker" id="djsKicker"></div><h2 class="display" id="djsTitle"></h2></div><p id="djsIntro"></p></div><div class="dj-grid" id="djGrid"></div><div class="empty-state" id="djEmpty" hidden></div></div>
+    </section>
+
+    <section class="tickets content-section" id="tickets" data-section="tickets">
+      <div class="wrap"><div class="section-head reveal"><div><div class="kicker" id="ticketsKicker"></div><h2 class="display" id="ticketsTitle"></h2></div><div class="clock" id="clock"></div></div><div class="ticket-grid" id="ticketGrid"></div></div>
+    </section>
+
+    <section class="venue content-section paper" id="venue" data-section="venue">
+      <div class="wrap venue-grid"><div class="reveal"><div class="kicker" id="venueKicker"></div><h2 class="display" id="venueTitle"></h2><p id="venueCopy"></p><div class="venue-info"><strong id="venueName"></strong><span id="venueAddress"></span></div><a class="btn dark" id="mapLink" target="_blank" rel="noopener"></a></div><div class="map reveal" id="mapBox"><iframe id="mapFrame" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div></div>
+    </section>
+
+    <section class="faq content-section" id="faq" data-section="faq"><div class="wrap faq-grid"><div class="reveal"><div class="kicker" id="faqKicker"></div><h2 class="display" id="faqTitle"></h2></div><div class="faq-list reveal" id="faqList"></div></div></section>
+
+    <section class="final content-section" data-section="final"><div class="final-glow"></div><div class="wrap reveal"><div class="kicker" id="finalKicker"></div><div class="macabra-word">MACABRA</div><h2 class="display" id="finalTitle"></h2><p id="finalCopy"></p><div class="hero-actions"><a class="btn hot" href="#tickets" data-copy="navTickets">Ingressos</a><a class="btn ghost" id="instagramLink" target="_blank" rel="noopener">Instagram</a></div></div></section>
+  </main>
+
+  <div class="mobile-buy" id="mobileBuy"><a href="#tickets"><span id="mobileTicketName">LOTE PROMOCIONAL</span><strong id="mobileTicketPrice">R$ 40</strong></a></div>
+  <script src="/assets/site.js" defer></script>
+</body>
+</html>
