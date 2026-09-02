@@ -1,78 +1,29 @@
 <!doctype html>
 <html lang="pt-BR" data-lang="pt">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#090706">
-  <title>Macabra — Halloween GTRZ</title>
-  <link rel="stylesheet" href="/assets/site.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#10090b">
+<title>MACABRA — 31 OUT · Biruta Bar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Metal+Mania&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
-  <div class="noise" aria-hidden="true"></div>
-  <header class="site-header">
-    <div class="wrap header-inner">
-      <a href="#top" class="gtrz-word">GTRZ</a>
-      <nav class="site-nav">
-        <a href="#manifesto" data-copy="navExperience">Experiência</a>
-        <a href="#sound" data-copy="navSound">Música</a>
-        <a href="#djs" data-copy="navDjs">DJs</a>
-        <a href="#venue" data-copy="navVenue">Local</a>
-        <div class="lang-switch"><button type="button" data-lang="pt">PT</button><button type="button" data-lang="es">ES</button></div>
-        <a class="nav-buy" href="#tickets" data-copy="navTickets">Ingressos</a>
-      </nav>
-    </div>
-    <div class="scroll-progress"><span id="scrollProgress"></span></div>
-  </header>
-
-  <main id="top">
-    <section class="hero content-section" data-section="hero">
-      <div class="hero-image" id="heroImage"></div>
-      <div class="hero-overlay"></div>
-      <div class="wrap hero-grid">
-        <div class="hero-copy reveal">
-          <div class="eyebrow" id="heroEyebrow"></div>
-          <img class="event-logo" id="eventLogo" alt="Macabra" hidden>
-          <div class="macabra-word" id="eventWord">MACABRA</div>
-          <h1 class="display" id="heroTitle"></h1>
-          <p id="heroCopy"></p>
-          <div class="hero-actions"><a class="btn hot" href="#tickets" id="heroCta"></a><a class="btn ghost" href="#venue" data-copy="navVenue">Local</a></div>
-        </div>
-        <aside class="poster-card reveal">
-          <img id="posterImage" alt="Macabra" hidden>
-          <div class="poster-fallback" id="posterFallback"><span>31</span><small>OUTUBRO</small><strong>MACABRA</strong></div>
-          <div class="meta-grid"><div><small>DATA</small><b id="metaDate"></b></div><div><small>HORÁRIO</small><b id="metaTime"></b></div><div><small>LOCAL</small><b id="metaVenue"></b></div></div>
-        </aside>
-      </div>
-    </section>
-
-    <div class="ticker"><div class="ticker-track" id="tickerTrack"></div></div>
-
-    <section class="manifesto content-section" id="manifesto" data-section="manifesto">
-      <div class="wrap two-col"><div class="reveal"><div class="kicker" id="manifestoKicker"></div><h2 class="display" id="manifestoTitle"></h2></div><div class="copy-block reveal"><p id="manifestoCopy"></p><div class="rule"></div><div class="tags"><span>HALLOWEEN</span><span>LATINIDAD</span><span>PISTA</span><span>RECIFE</span></div></div></div>
-    </section>
-
-    <section class="sound content-section paper" id="sound" data-section="sound">
-      <div class="wrap sound-grid"><div class="reveal"><div class="kicker" id="soundKicker"></div><h2 class="display" id="soundTitle"></h2><p id="soundCopy"></p><div class="genres" id="genres"></div></div><div class="ritual-orb reveal" aria-hidden="true"><span>☠</span></div></div>
-    </section>
-
-    <section class="djs content-section" id="djs" data-section="djs">
-      <div class="wrap"><div class="section-head reveal"><div><div class="kicker" id="djsKicker"></div><h2 class="display" id="djsTitle"></h2></div><p id="djsIntro"></p></div><div class="dj-grid" id="djGrid"></div><div class="empty-state" id="djEmpty" hidden></div></div>
-    </section>
-
-    <section class="tickets content-section" id="tickets" data-section="tickets">
-      <div class="wrap"><div class="section-head reveal"><div><div class="kicker" id="ticketsKicker"></div><h2 class="display" id="ticketsTitle"></h2></div><div class="clock" id="clock"></div></div><div class="ticket-grid" id="ticketGrid"></div></div>
-    </section>
-
-    <section class="venue content-section paper" id="venue" data-section="venue">
-      <div class="wrap venue-grid"><div class="reveal"><div class="kicker" id="venueKicker"></div><h2 class="display" id="venueTitle"></h2><p id="venueCopy"></p><div class="venue-info"><strong id="venueName"></strong><span id="venueAddress"></span></div><a class="btn dark" id="mapLink" target="_blank" rel="noopener"></a></div><div class="map reveal" id="mapBox"><iframe id="mapFrame" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div></div>
-    </section>
-
-    <section class="faq content-section" id="faq" data-section="faq"><div class="wrap faq-grid"><div class="reveal"><div class="kicker" id="faqKicker"></div><h2 class="display" id="faqTitle"></h2></div><div class="faq-list reveal" id="faqList"></div></div></section>
-
-    <section class="final content-section" data-section="final"><div class="final-glow"></div><div class="wrap reveal"><div class="kicker" id="finalKicker"></div><div class="macabra-word">MACABRA</div><h2 class="display" id="finalTitle"></h2><p id="finalCopy"></p><div class="hero-actions"><a class="btn hot" href="#tickets" data-copy="navTickets">Ingressos</a><a class="btn ghost" id="instagramLink" target="_blank" rel="noopener">Instagram</a></div></div></section>
-  </main>
-
-  <div class="mobile-buy" id="mobileBuy"><a href="#tickets"><span id="mobileTicketName">LOTE PROMOCIONAL</span><strong id="mobileTicketPrice">R$ 40</strong></a></div>
-  <script src="/assets/site.js" defer></script>
-</body>
-</html>
+<div class="noise"></div>
+<header class="header"><div class="wrap header-in"><a class="brand" href="#top"><strong class="gtrz-word">GTRZ</strong><span></span><b>Macabra</b></a><nav class="nav"><a href="#evento">O evento</a><a href="#som">Música</a><a href="#local">Local</a><div class="lang"><button type="button" data-lang-btn="pt" class="active">PT</button><button type="button" data-lang-btn="es">ES</button></div><a class="top-buy" href="#ingressos">Lote · R$ 40</a></nav></div><div class="progress"><i id="progressBar"></i></div></header>
+<main id="top">
+<section class="hero"><div class="hero-glow"></div><div class="wrap hero-grid"><div class="reveal"><div class="eyebrow">31 de outubro · Recife</div><h1 class="macabra-font">MACABRA<span>O Halloween da GTRZ</span></h1><p class="hero-copy">A noite mais sombria da GTRZ encontra a energia da pista latina. Halloween, reggaeton, dembow, perreo, funk e uma madrugada feita para Recife.</p><div class="hero-meta"><div><small>Data</small><strong>31 OUT · SÁBADO</strong></div><div><small>Horário</small><strong>21H</strong></div><div><small>Local</small><strong>BIRUTA BAR · RECIFE</strong></div></div><div class="ctas"><a class="btn btn-primary" href="#ingressos">Garantir por R$ 40</a><a class="btn" href="#evento">Conhecer a Macabra</a></div></div><div class="hero-poster-wrap reveal"><img id="heroPosterImage" class="hero-poster" alt="Pôster oficial da Macabra"></div></div></section>
+<div class="runner"><div class="runner-track"><div class="runner-segment"><span>MACABRA</span><span>HALLOWEEN GTRZ</span><span>31 OUTUBRO</span><span>21H</span><span>BIRUTA BAR</span><span>RECIFE</span><span>REGGAETON · DEMBOW · PERREO</span></div><div class="runner-segment"><span>MACABRA</span><span>HALLOWEEN GTRZ</span><span>31 OUTUBRO</span><span>21H</span><span>BIRUTA BAR</span><span>RECIFE</span><span>REGGAETON · DEMBOW · PERREO</span></div></div></div>
+<section class="manifesto" id="evento"><div class="wrap manifesto-grid"><div class="reveal"><div class="manifesto-kicker">Recife, prepara-te</div><h2 class="display">UMA NOITE<br>PARA VIVER<br><span class="gold">O ESCURO.</span></h2></div><div class="manifesto-copy reveal"><p><strong>Macabra é o Halloween da GTRZ.</strong> Uma festa criada para cruzar o universo sombrio de 31 de outubro com a energia que já move a nossa pista.</p><div class="rule"></div><p>Parte da essência latina permanece: reggaeton, dembow e perreo dividem a noite com funk e outros sons feitos para manter a pista em movimento.</p></div></div></section>
+<section class="sound" id="som"><div class="wrap sound-grid"><div class="reveal"><div class="kicker">Som da noite</div><h2 class="display">LATINA.<br>QUENTE.<br><span>SOMBRIA.</span></h2><p class="sound-copy">A Macabra conversa com quem vive a La Rumba, mas tem identidade própria. A pista mistura ritmos latinos e brasileiros dentro do universo de Halloween.</p><div class="genres"><span class="genre hot">REGGAETON</span><span class="genre gold-chip">DEMBOW</span><span class="genre">PERREO</span><span class="genre">FUNK</span><span class="genre">HITS LATINOS</span><span class="genre">POP</span></div></div><div class="wave reveal"><div class="wave-ring"></div><div class="wave-bars">${Array.from({length:13},(_,i)=>`<i style="--h:${60+(i%7)*28}px;--d:-.${(i%9)+2}s"></i>`).join('')}</div><div class="sound-note">Do perreo ao funk — sem perder a atmosfera Macabra.</div></div></div></section>
+<section class="experience"><div class="wrap"><div class="experience-head reveal"><h2 class="display">A EXPERIÊNCIA<br><span class="gold">MACABRA.</span></h2><p>A comunicação é escura. A energia é de pista. E a noite nasce como um novo universo da GTRZ, sem deixar de conversar com o público que já viveu a La Rumba.</p></div><div class="experience-grid"><article class="exp-card reveal"><div class="exp-num">01</div><h3>Halloween adulto</h3><p>Uma identidade visual sombria, intensa e pensada para uma noite de 31 de outubro que não pareça uma festa temática genérica.</p></article><article class="exp-card reveal"><div class="exp-num">02</div><h3>Essência latina</h3><p>Reggaeton, dembow, perreo e referências latinas continuam presentes, agora dentro de um universo próprio.</p></article><article class="exp-card reveal"><div class="exp-num">03</div><h3>Pista GTRZ</h3><p>Uma festa construída para quem quer chegar às 21h e viver a noite com música, intensidade e a assinatura da GTRZ.</p></article></div></div></section>
+<section class="info" id="local"><div class="wrap info-grid"><div class="info-copy reveal"><div class="eyebrow">O encontro está marcado</div><h2 class="display">31 DE<br>OUTUBRO.<br><span class="gold">RECIFE.</span></h2><p>A Macabra acontece no Biruta Bar. Uma nova festa da GTRZ para uma data que pede uma identidade própria.</p><div class="info-list"><div class="info-row"><small>Data</small><strong>31 DE OUTUBRO DE 2026 · SÁBADO</strong></div><div class="info-row"><small>Horário</small><strong>21H</strong></div><div class="info-row"><small>Local</small><strong>BIRUTA BAR · RECIFE</strong></div></div></div><div class="poster-mini reveal"><img id="posterMiniImage" alt="Arte da Macabra"><div class="poster-stamp">Arte oficial · Macabra 2026</div></div></div></section>
+<section class="tickets" id="ingressos"><div class="wrap tickets-grid"><div class="reveal"><div class="tickets-kicker">Abertura de vendas</div><h2 class="display">LOTE<br><span>PROMOCIONAL.</span></h2></div><div class="ticket-side reveal"><div class="ticket-label">Valor promocional</div><div class="price">R$ 40</div><p>Garanta sua entrada no lote promocional da Macabra. O valor dos próximos lotes poderá ser diferente.</p><a class="btn" id="buyButton" href="#">Comprar ingresso</a><div class="ticket-fine">31 de outubro · 21h · Biruta Bar · Recife</div></div></div></section>
+<section class="countdown"><div class="wrap count-grid"><div class="reveal"><div class="kicker">Contagem regressiva</div><h2 class="display">ATÉ A<br>NOITE <span class="purple">MACABRA.</span></h2><p>31 de outubro de 2026, às 21h.</p></div><div class="clock reveal" id="clock"><div><strong id="days">--</strong><small>Dias</small></div><div><strong id="hours">--</strong><small>Horas</small></div><div><strong id="minutes">--</strong><small>Min</small></div><div><strong id="seconds">--</strong><small>Seg</small></div></div></div></section>
+<section class="final"><div class="wrap reveal"><div class="final-brand macabra-font">MACABRA</div><h2 class="display">RECIFE,<br>PREPARA-TE.</h2><p>31 de outubro · 21h · Biruta Bar. O Halloween da GTRZ começa aqui.</p><a class="btn btn-primary" href="#ingressos">Garantir meu ingresso</a><div class="footer-logo">GTRZ</div></div></section>
+</main>
+<a class="mobile-buy" href="#ingressos">Lote promocional · R$ 40</a>
+<script src="/assets/poster-data.js"></script><script src="/assets/reference-cms.js"></script><script>const p=window.MACABRA_DEFAULT_POSTER||'';if(p){heroPosterImage.src=p;posterMiniImage.src=p}const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.1});document.querySelectorAll('.reveal').forEach(e=>io.observe(e));function tick(){let d=Math.max(0,new Date('2026-10-31T21:00:00-03:00')-Date.now());days.textContent=String(Math.floor(d/86400000)).padStart(2,'0');d%=86400000;hours.textContent=String(Math.floor(d/3600000)).padStart(2,'0');d%=3600000;minutes.textContent=String(Math.floor(d/60000)).padStart(2,'0');seconds.textContent=String(Math.floor((d%60000)/1000)).padStart(2,'0')}tick();setInterval(tick,1000);addEventListener('scroll',()=>{const m=document.documentElement.scrollHeight-innerHeight;progressBar.style.transform=`scaleX(${m?scrollY/m:0})`},{passive:true});</script>
+</body></html>
