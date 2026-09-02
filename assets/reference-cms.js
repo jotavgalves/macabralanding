@@ -1,64 +1,21 @@
-(() => {
-  const $ = s => document.querySelector(s);
-  const $$ = s => [...document.querySelectorAll(s)];
-  const txt = (el,v) => { if (el && v != null && v !== '') el.textContent = String(v); };
-  const money = n => `R$ ${Number(n||0).toLocaleString('pt-BR',{minimumFractionDigits:0,maximumFractionDigits:2})}`;
-  const lang = () => document.documentElement.dataset.lang || 'pt';
-  const local = v => v && typeof v === 'object' ? (v[lang()] || v.pt || v.es || '') : (v || '');
-  let config;
-
-  function applyBranding(){
-    const b=config?.branding||{}; const r=document.documentElement;
-    const map=[['--bg',b.background],['--paper',b.paper],['--gold',b.primary],['--orange',b.primary],['--purple',b.secondary],['--white',b.text]];
-    map.forEach(([k,v])=>{if(v)r.style.setProperty(k,v)});
-    const hero=$('#heroPosterImage'), mini=$('#posterMiniImage');
-    if(b.poster){ if(hero)hero.src=b.poster; if(mini)mini.src=b.poster; }
-    else if(hero&&mini&&!mini.src) mini.src=hero.src;
-  }
-
-  function applyEvent(){
-    const e=config?.event||{};
-    const meta=$$('.hero-meta strong');
-    txt(meta[0],e.dateLabel ? `${e.dateLabel}${/sábado/i.test(e.dateLabel)?'':' · SÁBADO'}` : null);
-    txt(meta[1],e.timeLabel); txt(meta[2],[e.venue,e.city].filter(Boolean).join(' · '));
-    const rows=$$('.info-row strong');
-    txt(rows[0],e.dateLabel ? `${e.dateLabel} DE 2026 · SÁBADO` : null); txt(rows[1],e.timeLabel); txt(rows[2],[e.venue,e.city].filter(Boolean).join(' · '));
-    const eyebrow=$('.hero .eyebrow'); if(eyebrow && e.city) txt(eyebrow,`31 de outubro · ${e.city}`);
-  }
-
-  function applyGenres(){
-    const host=$('.genres'); const arr=Array.isArray(config?.genres)?config.genres:[]; if(!host||!arr.length)return;
-    host.innerHTML=arr.map((g,i)=>`<span class="genre ${i===0?'hot':i===1?'gold-chip':''}">${String(g)}</span>`).join('');
-  }
-
-  function applyTicket(){
-    const tickets=(config?.tickets||[]).filter(t=>t.status!=='hidden');
-    const t=tickets.find(x=>x.featured)||tickets[0]; if(!t)return;
-    txt($('.price'),money(t.price));
-    const title=$('.tickets h2'); if(title && t.name){const parts=String(t.name).trim().split(/\s+/); title.innerHTML=parts.length>1?`${parts.slice(0,-1).join(' ')}<br><span>${parts.at(-1)}.</span>`:`<span>${parts[0]}.</span>`;}
-    const p=$('.ticket-side p'); txt(p,local(t.description));
-    const buy=$('#buyButton'); if(buy){
-      if(t.status==='soldout'){buy.textContent='Esgotado';buy.removeAttribute('href');buy.style.pointerEvents='none';buy.style.opacity='.55';}
-      else if(t.status==='comingsoon'){buy.textContent='Em breve';buy.removeAttribute('href');buy.style.pointerEvents='none';buy.style.opacity='.55';}
-      else {
-        let href='';
-        if(t.checkoutEnabled&&t.checkoutUrl) href=t.checkoutUrl;
-        else if(t.whatsappEnabled&&config?.links?.whatsapp){const base=String(config.links.whatsapp); const num=base.startsWith('http')?base:`https://wa.me/${base.replace(/\D/g,'')}`; try{const u=new URL(num);u.searchParams.set('text',`Olá! Quero comprar ${t.name} para a ${config.event?.name||'Macabra'}. Valor: ${money(t.price)}.`);href=u.toString()}catch{}}
-        buy.href=href||'#'; buy.textContent='Comprar ingresso'; buy.style.pointerEvents=''; buy.style.opacity='';
-      }
-      const top=$('.top-buy'); if(top) top.textContent=`Lote · ${money(t.price)}`;
-      const mobile=$('.mobile-buy'); if(mobile) mobile.textContent=`${t.name||'Ingresso'} · ${money(t.price)}`;
-    }
-  }
-
-  function applyCopy(){
-    const c=config?.copy?.[lang()]||config?.copy?.pt||{};
-    const map={heroCopy:'heroCopy',manifestoKicker:'manifestoKicker',soundKicker:'soundKicker',soundCopy:'soundCopy',finalTitle:'finalTitle',finalCopy:'finalCopy'};
-    for(const [key,data] of Object.entries(map)){const el=$(`[data-t="${data}"]`);if(el&&c[key]) el.innerHTML=c[key];}
-  }
-
-  function applyAll(){applyBranding();applyEvent();applyGenres();applyTicket();applyCopy();}
-  async function load(){try{const r=await fetch('/api/site',{cache:'no-store'});const d=await r.json();if(d?.ok){config=d.config;applyAll();}}catch(e){console.warn('Macabra CMS indisponível; usando conteúdo incorporado.',e)}}
-  document.addEventListener('click',e=>{if(e.target.closest('[data-lang-btn]'))setTimeout(()=>{if(config)applyAll()},0)});
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',load,{once:true});else load();
+(()=>{
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];let config=null,dynamicClock=null;
+const esc=v=>String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const lang=()=>document.documentElement.dataset.lang||'pt';const local=v=>v&&typeof v==='object'?(v[lang()]||v.pt||v.es||''):(v||'');const money=n=>`R$ ${Number(n||0).toLocaleString('pt-BR',{minimumFractionDigits:0,maximumFractionDigits:2})}`;const cp=k=>config?.copy?.[lang()]?.[k]??config?.copy?.pt?.[k]??'';
+function text(el,v){if(el&&v!==undefined&&v!==null&&v!=='')el.textContent=String(v)}
+function applyBranding(){const b=config?.branding||{},r=document.documentElement;[['--bg',b.background],['--paper',b.paper],['--gold',b.primary],['--orange',b.primary],['--purple',b.secondary],['--white',b.text]].forEach(([k,v])=>{if(v)r.style.setProperty(k,v)});const poster=b.poster||window.MACABRA_DEFAULT_POSTER||'';if(poster){const h=$('#heroPosterImage'),m=$('#posterMiniImage');if(h)h.src=poster;if(m)m.src=poster}const bg=$('#cmsHeroBackground');if(bg){if(b.heroImage){bg.style.backgroundImage=`url("${String(b.heroImage).replace(/"/g,'%22')}")`;bg.classList.add('has-image')}else{bg.style.backgroundImage='';bg.classList.remove('has-image')}}const logo=$('#macabraLogoImage'),fallback=$('#macabraTextLogo');if(logo&&fallback){if(b.logo){logo.src=b.logo;logo.hidden=false;fallback.hidden=true}else{logo.hidden=true;fallback.hidden=false}}}
+function applyEvent(){const e=config?.event||{},date=e.dateLabel||'31 DE OUTUBRO',meta=$$('.hero-meta strong');text(meta[0],/sábado/i.test(date)?date:`${date} · SÁBADO`);text(meta[1],e.timeLabel);text(meta[2],[e.venue,e.city].filter(Boolean).join(' · '));const rows=$$('.info-row strong');text(rows[0],/\d{4}/.test(date)?date:`${date} DE 2026 · SÁBADO`);text(rows[1],e.timeLabel);text(rows[2],[e.venue,e.city].filter(Boolean).join(' · '));const eye=$('.hero .eyebrow');if(eye&&e.city)text(eye,`${lang()==='es'?'31 de octubre':'31 de outubro'} · ${e.city}`)}
+function applyCopy(){[['heroCopy','[data-t="heroCopy"]',false],['manifestoKicker','[data-t="manifestoKicker"]',false],['manifestoTitle','[data-t="manifestoTitle"]',true],['manifestoCopy','[data-t="manifestoP1"]',true],['soundKicker','[data-t="soundKicker"]',false],['soundTitle','[data-t="soundTitle"]',true],['soundCopy','[data-t="soundCopy"]',false],['djsKicker','#djsKicker',false],['djsTitle','#djsTitle',true],['djsIntro','#djsIntro',false],['djsEmpty','#djEmpty',false],['faqKicker','#faqKicker',false],['faqTitle','#faqTitle',true],['finalTitle','[data-t="finalTitle"]',true],['finalCopy','[data-t="finalCopy"]',false]].forEach(([k,s,html])=>{const el=$(s),v=cp(k);if(el&&v){if(html)el.innerHTML=v;else el.textContent=v}});[['navExperience','.nav a[href="#evento"]'],['navSound','.nav a[href="#som"]'],['navDjs','.nav a[href="#djs"]'],['navVenue','.nav a[href="#local"]']].forEach(([k,s])=>{const el=$(s),v=cp(k);if(el&&v)el.textContent=v})}
+function applyGenres(){const host=$('.genres'),arr=Array.isArray(config?.genres)?config.genres:[];if(host&&arr.length)host.innerHTML=arr.map((g,i)=>`<span class="genre ${i===0?'hot':i===1?'gold-chip':''}">${esc(g)}</span>`).join('')}
+function wa(t){const base=String(config?.links?.whatsapp||'').trim();if(!base)return'';try{const u=new URL(base.startsWith('http')?base:`https://wa.me/${base.replace(/\D/g,'')}`);u.searchParams.set('text',lang()==='es'?`Hola! Quiero comprar ${t.name} para ${config.event?.name||'Macabra'}. Valor: ${money(t.price)}.`:`Olá! Quero comprar ${t.name} para a ${config.event?.name||'Macabra'}. Valor: ${money(t.price)}.`);return u.toString()}catch{return''}}
+function action(t){const st=t.status||'active';if(st==='soldout')return`<div class="ticket-state">${esc(cp('soldOut')||'Esgotado')}</div>`;if(st==='comingsoon')return`<div class="ticket-state">${esc(cp('comingSoon')||'Em breve')}</div>`;let href='',label='Comprar ingresso';if(t.checkoutEnabled&&t.checkoutUrl){href=t.checkoutUrl;label=cp('buyCheckout')||label}else if(t.whatsappEnabled&&wa(t)){href=wa(t);label=cp('buyWhatsapp')||'Comprar sem taxa'}return href?`<a class="btn btn-primary" href="${esc(href)}" target="_blank" rel="noopener">${esc(label)}</a>`:'<div class="ticket-state">Venda em breve</div>'}
+function applyTickets(){const list=(Array.isArray(config?.tickets)?config.tickets:[]).filter(t=>t.status!=='hidden');if(!list.length)return;const f=list.find(t=>t.featured)||list[0],words=String(f.name||'Ingresso').trim().split(/\s+/),title=$('.tickets h2');if(title)title.innerHTML=words.length>1?`${esc(words.slice(0,-1).join(' '))}<br><span>${esc(words.at(-1))}.</span>`:`<span>${esc(words[0])}.</span>`;text($('.price'),money(f.price));text($('.ticket-side p'),local(f.description));const buy=$('#buyButton'),tmp=document.createElement('div');tmp.innerHTML=action(f);const node=tmp.firstElementChild;if(buy&&node){if(node.tagName==='A'){buy.textContent=node.textContent;buy.href=node.getAttribute('href');buy.target='_blank';buy.rel='noopener';buy.style.pointerEvents='';buy.style.opacity=''}else{buy.textContent=node.textContent;buy.removeAttribute('href');buy.style.pointerEvents='none';buy.style.opacity='.58'}}const top=$('.top-buy'),mob=$('.mobile-buy');if(top)top.textContent=`${f.name||'Ingresso'} · ${money(f.price)}`;if(mob)mob.textContent=`${f.name||'Ingresso'} · ${money(f.price)}`;const extras=$('#ticketExtras'),rest=list.filter(t=>t!==f);if(extras){extras.innerHTML=rest.map(t=>`<article class="ticket-extra ${t.featured?'featured':''}"><div class="badge">${esc(t.badge||'MACABRA')}</div><h3>${esc(t.name||'Ingresso')}</h3><div class="extra-price">${esc(money(t.price))}</div><p>${esc(local(t.description))}</p>${action(t)}</article>`).join('');extras.hidden=!rest.length}}
+function applyDjs(){const grid=$('#djGrid'),empty=$('#djEmpty');if(!grid)return;const list=(Array.isArray(config?.djs)?config.djs:[]).filter(d=>d.active!==false);grid.innerHTML=list.map((d,i)=>`<article class="dj-editorial reveal"><div class="dj-photo">${d.photo?`<img src="${esc(d.photo)}" alt="${esc(d.name||`DJ ${i+1}`)}" style="object-position:${esc(d.photoPosition||'50% 50%')}" loading="lazy">`:''}</div><div class="dj-copy"><div class="dj-origin">${esc(d.origin||'MACABRA')}</div><h3 class="dj-name">${esc(d.name||`DJ ${i+1}`)}</h3><div class="dj-bio">${esc(local(d.bio))}</div>${d.instagram?`<a class="dj-instagram" href="${esc(d.instagram)}" target="_blank" rel="noopener">Instagram ↗</a>`:''}</div></article>`).join('');if(empty)empty.hidden=!!list.length}
+function applyFaq(){const host=$('#faqList');if(!host)return;const items=(Array.isArray(config?.faq)?config.faq:[]).filter(x=>x.active!==false);host.innerHTML=items.map((x,i)=>`<details ${i===0?'open':''}><summary>${esc(local(x.question))}</summary><p>${esc(local(x.answer))}</p></details>`).join('')}
+function applySections(){(Array.isArray(config?.sections)?config.sections:[]).forEach(x=>{const el=document.querySelector(`[data-section="${CSS.escape(x.id)}"]`);if(el)el.hidden=x.active===false})}
+function clock(){if(window.macabraClockTimer){clearInterval(window.macabraClockTimer);window.macabraClockTimer=null}if(dynamicClock)clearInterval(dynamicClock);const target=Date.parse(config?.event?.date||'2026-10-31T21:00:00-03:00');if(!Number.isFinite(target))return;const tick=()=>{let d=Math.max(0,target-Date.now());const day=Math.floor(d/86400000);d%=86400000;const h=Math.floor(d/3600000);d%=3600000;const m=Math.floor(d/60000),s=Math.floor((d%60000)/1000);text($('#days'),String(day).padStart(2,'0'));text($('#hours'),String(h).padStart(2,'0'));text($('#minutes'),String(m).padStart(2,'0'));text($('#seconds'),String(s).padStart(2,'0'))};tick();dynamicClock=setInterval(tick,1000)}
+function reveal(){if(!('IntersectionObserver'in window)){$$('.reveal').forEach(x=>x.classList.add('in'));return}const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.08});$$('.reveal').forEach(x=>{if(!x.classList.contains('in'))io.observe(x)})}
+function all(){applyBranding();applyEvent();applyCopy();applyGenres();applyTickets();applyDjs();applyFaq();applySections();clock();reveal()}
+async function load(){try{const r=await fetch('/api/site',{cache:'no-store'}),d=await r.json();if(d?.ok){config=d.config;all()}}catch(e){console.warn('Macabra CMS indisponível; usando conteúdo incorporado.',e)}}
+document.addEventListener('click',e=>{if(e.target.closest('[data-lang-btn]')&&config)setTimeout(all,0)});if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',load,{once:true});else load();
 })();
