@@ -3,107 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#080708">
-<meta name="description" content="Macabra — Halloween GTRZ. 31 de outubro de 2026, 21h, Biruta Bar, Recife.">
 <title>MACABRA — 31 OUT 2026</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Metal+Mania&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=20260909-rebuild">
+<meta name="theme-color" content="#080708">
+<link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
 <div class="noise"></div>
-<div class="lang-modal" id="langModal" hidden>
-  <div class="lang-box">
-    <small>MACABRA · GTRZ</small>
-    <h2 class="display">COMO VOCÊ<br>QUER VIVER<br><span class="accent">A NOITE?</span></h2>
-    <p>Escolha o idioma da experiência. Elige el idioma de la experiencia.</p>
-    <div class="choices"><button data-modal-lang="pt">Português</button><button data-modal-lang="es">Español</button></div>
-  </div>
-</div>
-<header class="header" id="header">
-  <div class="wrap header-in">
-    <a href="#top" class="brand"><img class="gtrz" src="/assets/gtrz-wordmark.svg" alt="GTRZ"><span>MACABRA</span></a>
-    <nav class="nav">
-      <a href="#som" data-t="navSound">Música</a><a href="#djs" data-t="navDjs">DJs</a><a href="#local" data-t="navVenue">Local</a>
-      <div class="lang"><button data-lang-btn="pt">PT</button><button data-lang-btn="es">ES</button></div>
-      <a href="#ingressos" class="top-buy" id="topLotText">Lote promocional · R$ 40</a>
-    </nav>
-  </div>
-  <div class="header-progress"><span id="progressBar"></span></div>
-</header>
+<div class="lang-modal" id="langModal" hidden><div class="lang-box"><small>MACABRA</small><h2 class="display">COMO VOCÊ<br>QUER VIVER<br><span class="accent">A MACABRA?</span></h2><p>Escolha o idioma da experiência. Elige el idioma de la experiencia.</p><div class="choices"><button data-modal-lang="pt">Português</button><button data-modal-lang="es">Español</button></div></div></div>
+<header class="header" id="header"><div class="wrap header-in"><a href="#top"><img class="gtrz" src="/assets/gtrz-wordmark.svg" alt="GTRZ"></a><nav class="nav"><a href="#som" data-t="navSound">Música</a><a href="#djs" data-t="navDjs">DJs</a><a href="#local" data-t="navVenue">Local</a><div class="lang"><button data-lang-btn="pt">PT</button><button data-lang-btn="es">ES</button></div><a href="#ingressos" class="top-buy" id="topLotText">Lote promocional · R$ 40</a></nav></div><div class="header-progress"><span id="progressBar"></span></div></header>
 <main id="top">
-<section class="hero" data-section="hero">
-  <img class="hero-art" src="/assets/macabra-skull.svg" alt="">
-  <div class="wrap hero-grid">
-    <div class="reveal hero-left">
-      <img class="hero-logo" id="brandLogo" src="/assets/macabra-logo.svg" alt="Macabra">
-      <div class="meta">
-        <div><small data-t="dateLabel">Data</small><strong id="eventDateLabel">31 OUT 2026</strong></div>
-        <div><small data-t="timeLabel">Horário</small><strong id="eventTimeLabel">21H</strong></div>
-        <div><small data-t="cityLabel">Cidade</small><strong id="eventCityLabel">RECIFE</strong></div>
-        <div><small data-t="venueLabel">Local</small><strong id="eventVenueLabel">BIRUTA BAR</strong></div>
-      </div>
-    </div>
-    <div class="reveal hero-copy-block">
-      <h1 class="display" data-t="heroTitle">LA NOCHE<br><span class="accent">SERÁ MACABRA.</span></h1>
-      <p data-t="heroCopy">Halloween, reggaeton, dembow, perreo, funk e uma madrugada inteira para transformar Recife.</p>
-      <div class="ctas hero-main-ctas">
-        <a class="btn btn-accent js-wa" href="#ingressos"><span data-t="buyNoFee">Comprar sem taxa</span></a>
-        <a class="btn js-ticket" href="#ingressos"><span data-t="buyOnline">Comprar online</span></a>
-      </div>
-    </div>
-  </div>
-</section>
-<div class="runner" data-section="runner"><div class="runner-track"><div class="runner-segment"><span>MACABRA</span><span>HALLOWEEN GTRZ</span><span>31 OUT</span><span>21H</span><span>BIRUTA BAR</span><span>RECIFE</span><span>REGGAETON × DEMBOW × PERREO</span></div><div class="runner-segment" aria-hidden="true"><span>MACABRA</span><span>HALLOWEEN GTRZ</span><span>31 OUT</span><span>21H</span><span>BIRUTA BAR</span><span>RECIFE</span><span>REGGAETON × DEMBOW × PERREO</span></div></div></div>
-<section class="city-statement" id="evento" data-section="manifesto">
-  <div class="wrap city-grid">
-    <div class="reveal"><img class="statement-art" src="/assets/macabra-moon.svg" alt=""></div>
-    <div class="city-copy reveal"><div class="eyebrow" data-t="manifestoKicker">Recife, prepara-te</div><h2 class="display" data-t="manifestoTitle">UMA NOVA<br>NOITE<br><span class="accent">COMEÇA.</span></h2><p data-t="manifestoCopy">Macabra é o Halloween da GTRZ: horror, fantasia, pista e latinidade em um universo próprio.</p><div class="city-rule"></div></div>
-  </div>
-</section>
-<section class="sound" id="som" data-section="sound">
-  <div class="wrap sound-grid">
-    <div class="reveal"><div class="kicker" data-t="soundKicker">Som da noite</div><h2 class="display" data-t="soundTitle">¿QUÉ VA<br>A <span class="accent-dark">SONAR?</span></h2><p class="sound-copy" data-t="soundCopy">Reggaeton, dembow, perreo, funk, pop e hits latinos atravessam a madrugada.</p><div class="genres" id="genres"></div></div>
-    <div class="sound-visual reveal"><img class="mic" src="/assets/macabra-mic.svg" alt=""></div>
-  </div>
-</section>
-<section class="references" data-section="references">
-  <div class="wrap">
-    <div class="references-head reveal"><div><div class="kicker">Universo Macabra</div><h2 class="display">QUATRO SÍMBOLOS.<br>UMA SÓ<br><span class="accent">NOITE.</span></h2></div><p>Elementos que definem a direção visual: horror, ritual, fogo e noite.</p></div>
-    <div class="reference-grid">
-      <figure class="ref-card reveal"><img src="/assets/macabra-skull.svg" alt="Caveira"><figcaption>CAVEIRA</figcaption></figure>
-      <figure class="ref-card reveal"><img src="/assets/macabra-moon.svg" alt="Lua"><figcaption>LUA</figcaption></figure>
-      <figure class="ref-card reveal"><img src="/assets/macabra-grave.svg" alt="Lápide"><figcaption>LÁPIDE</figcaption></figure>
-      <figure class="ref-card reveal"><img src="/assets/macabra-flame.svg" alt="Fogo"><figcaption>FOGO</figcaption></figure>
-    </div>
-  </div>
-</section>
-<section class="lineup" id="djs" data-section="djs">
-  <div class="wrap">
-    <div class="lineup-head reveal"><h2 class="section-title display" data-t="djsTitle">QUEM CONDUZ<br>O RITUAL?</h2><p data-t="djsIntro">Os DJs e atrações da noite aparecem aqui.</p></div>
-    <div class="dj-duo" id="djGrid"></div><div class="dj-empty" id="djEmpty" data-t="djsEmpty">Line-up em breve.</div>
-  </div>
-</section>
-<section class="date" data-section="date"><img src="/assets/macabra-date.svg" alt="31 de outubro de 2026"></section>
-<section class="venue" id="local" data-section="venue">
-  <div class="wrap venue-grid">
-    <div class="reveal"><div class="kicker" data-t="venueKicker">Onde acontece</div><h2 class="display" data-t="venueTitle">BIRUTA BAR<br><span class="accent">RECIFE.</span></h2><p data-t="venueCopy">31 de outubro, a partir das 21h.</p><div class="address"><strong id="venueName">BIRUTA BAR</strong><br><span id="venueAddress">Av. Brasília Formosa, s/n · Pina · Recife · PE</span></div><a class="btn venue-link" id="mapLink" href="#" target="_blank" data-t="openMap">Como chegar</a></div>
-    <div class="map reveal" id="mapBox"><div class="map-placeholder"><img src="/assets/macabra-grave.svg" alt=""><span>RECIFE · PINA</span></div></div>
-  </div>
-</section>
-<section class="tickets" id="ingressos" data-section="tickets">
-  <img class="globe" src="/assets/macabra-skull.svg" alt="">
-  <div class="wrap tickets-grid">
-    <div class="reveal"><div class="tickets-kicker" data-t="ticketsKicker">Abertura de vendas</div><h2 class="display" data-t="ticketsTitle">LOTE<br>PROMOCIONAL.</h2></div>
-    <div class="reveal ticket-side"><div class="price" id="mainPrice">R$ 40</div><p id="ticketDescription">Valor promocional por tempo limitado.</p><div class="ticket-actions"><a class="btn js-wa" href="#" target="_blank" data-t="buyNoFee">Comprar sem taxa</a><a class="btn alt js-ticket" href="#" target="_blank" data-t="buyOnline">Comprar online</a></div></div>
-  </div>
-</section>
-<section class="countdown" data-section="countdown"><div class="wrap count-grid"><div class="reveal"><div class="kicker">Contagem regressiva</div><h2 class="display">ATÉ A<br>NOITE <span class="accent-dark">MACABRA.</span></h2><p>31 de outubro de 2026 · 21h</p></div><div class="clock reveal"><div class="clock-item"><span class="clock-num" id="days">--</span><span class="clock-lab" data-t="days">Dias</span></div><div class="clock-item"><span class="clock-num" id="hours">--</span><span class="clock-lab" data-t="hours">Horas</span></div><div class="clock-item"><span class="clock-num" id="minutes">--</span><span class="clock-lab" data-t="minutes">Min</span></div><div class="clock-item"><span class="clock-num" id="seconds">--</span><span class="clock-lab" data-t="seconds">Seg</span></div></div></div></section>
-<section class="faq" id="faq" data-section="faq"><div class="wrap faq-grid"><div class="reveal"><div class="kicker" data-t="faqKicker">Antes da noite</div><h2 class="display" data-t="faqTitle">DÚVIDAS<br>FREQUENTES.</h2></div><div class="faq-list reveal" id="faqList"></div></div></section>
-<section class="final" data-section="final"><div class="wrap reveal"><img class="final-logo" src="/assets/macabra-logo.svg" alt="Macabra"><h2 class="display" data-t="finalTitle">RECIFE,<br><span class="accent">PREPARA-TE.</span></h2><p data-t="finalCopy">31 de outubro · 21h · Biruta Bar.</p><div class="ctas"><a class="btn btn-accent js-wa" href="#ingressos" data-t="buyNoFee">Comprar sem taxa</a><a class="btn js-ticket" href="#ingressos" data-t="buyOnline">Comprar online</a></div><img class="footer-logo" src="/assets/gtrz-eventos.svg" alt="GTRZ Eventos"></div></section>
+<section class="hero"><div class="hero-art poster-art" id="heroPosterArt"></div><div class="wrap hero-grid"><div class="reveal"><div class="hero-name">MACABRA</div><div class="meta"><div><small data-t="dateLabel">Data</small><strong id="eventDateLabel">31 OUT 2026</strong></div><div><small data-t="timeLabel">Horário</small><strong id="eventTimeLabel">21H</strong></div><div><small data-t="cityLabel">Cidade</small><strong id="eventCityLabel">RECIFE</strong></div><div><small data-t="venueLabel">Local</small><strong id="eventVenueLabel">BIRUTA BAR</strong></div></div></div><div class="reveal"><h1 class="display" data-t="heroTitle">LA NOCHE<br><span class="accent">SERÁ MACABRA.</span></h1><p data-t="heroCopy">Halloween, reggaeton, dembow, perreo, funk e uma madrugada inteira para transformar Recife.</p><div class="ctas hero-main-ctas"><a class="btn btn-accent js-wa" href="#ingressos"><span data-t="buyNoFee">Comprar sem taxa</span></a><a class="btn js-ticket" href="#ingressos"><span data-t="buyOnline">Comprar online</span></a></div></div></div></section>
+<div class="runner"><div class="runner-track-smooth"><div class="runner-segment"><span>MACABRA</span><span>31 OUT</span><span>21H</span><span>BIRUTA BAR</span><span>RECIFE</span><span>GTRZ EVENTOS</span><span>MACABRA</span><span>31 OUT</span><span>21H</span><span>BIRUTA BAR</span><span>RECIFE</span><span>GTRZ EVENTOS</span></div><div class="runner-segment" aria-hidden="true"><span>MACABRA</span><span>31 OUT</span><span>21H</span><span>BIRUTA BAR</span><span>RECIFE</span><span>GTRZ EVENTOS</span><span>MACABRA</span><span>31 OUT</span><span>21H</span><span>BIRUTA BAR</span><span>RECIFE</span><span>GTRZ EVENTOS</span></div></div></div>
+<section class="city-statement"><div class="wrap city-grid"><div class="reveal poster-panel" id="statementPoster"></div><div class="city-copy reveal"><div class="eyebrow" data-t="manifestoKicker">Recife, prepara-te</div><h2 class="display" data-t="manifestoTitle">UMA NOVA<br>NOITE<br><span class="accent">COMEÇA.</span></h2><p data-t="manifestoCopy">Macabra é o Halloween da GTRZ: horror, fantasia, pista e latinidade em um universo próprio.</p><div class="city-rule"></div></div></div></section>
+<section class="sound" id="som"><div class="wrap sound-grid"><div class="reveal"><div class="kicker" data-t="soundKicker">Som da noite</div><h2 class="display" data-t="soundTitle">¿QUÉ VA<br>A <span class="accent-dark">SONAR?</span></h2><p class="sound-copy" data-t="soundCopy">Reggaeton, dembow, perreo, funk, pop e hits latinos atravessam a madrugada.</p><div class="genres" id="genres"></div></div><div class="sound-visual reveal"><div class="poster-crop" id="soundPoster"></div></div></div></section>
+<section class="lineup" id="djs"><div class="wrap"><div class="lineup-head reveal"><h2 class="section-title display" data-t="djsTitle">QUEM CONDUZ<br>O RITUAL?</h2><p data-t="djsIntro">Os DJs e atrações da noite aparecem aqui.</p></div><div class="dj-duo" id="djGrid"></div><div class="dj-empty" id="djEmpty">Line-up em breve.</div></div></section>
+<section class="date"><div class="poster-date" id="datePoster"></div></section>
+<section class="venue" id="local"><div class="wrap venue-grid"><div class="reveal"><div class="kicker" data-t="venueKicker">Onde acontece</div><h2 class="display" data-t="venueTitle">BIRUTA BAR<br><span class="accent">RECIFE.</span></h2><p data-t="venueCopy">31 de outubro, a partir das 21h.</p><div class="address"><strong id="venueName">Biruta Bar</strong><br><span id="venueAddress">Av. Brasília Formosa, s/n · Pina · Recife · PE</span><br><a id="mapLink" class="text-link" href="#" hidden data-t="openMap">Como chegar</a></div></div><div class="map reveal" id="mapBox"><div class="map-fallback">BIRUTA BAR · RECIFE</div></div></div></section>
+<section class="tickets" id="ingressos"><div class="wrap tickets-grid"><div class="reveal"><div class="tickets-kicker" data-t="ticketsKicker">Abertura de vendas</div><h2 class="display" data-t="ticketsTitle">LOTE<br>PROMOCIONAL.</h2></div><div class="reveal"><div class="price" id="mainPrice">R$ 40</div><p id="ticketDescription">Valor promocional por tempo limitado.</p><div class="ticket-actions"><a class="btn js-wa" href="#ingressos" data-t="buyNoFee">Comprar sem taxa</a><a class="btn alt js-ticket" href="#ingressos" data-t="buyOnline">Comprar online</a></div></div></div></section>
+<section class="countdown"><div class="wrap count-grid"><div class="reveal"><div class="kicker">31 DE OUTUBRO</div><h2 class="display">ATÉ A<br><span class="accent-dark">MACABRA.</span></h2></div><div class="clock reveal"><div class="clock-item"><span class="clock-num" id="days">00</span><span class="clock-lab" data-t="days">Dias</span></div><div class="clock-item"><span class="clock-num" id="hours">00</span><span class="clock-lab" data-t="hours">Horas</span></div><div class="clock-item"><span class="clock-num" id="minutes">00</span><span class="clock-lab" data-t="minutes">Min</span></div><div class="clock-item"><span class="clock-num" id="seconds">00</span><span class="clock-lab" data-t="seconds">Seg</span></div></div></div></section>
+<section class="faq"><div class="wrap faq-grid"><div class="reveal"><div class="kicker" data-t="faqKicker">Antes da noite</div><h2 class="display" data-t="faqTitle">DÚVIDAS<br>FREQUENTES.</h2></div><div class="faq-list reveal" id="faqList"></div></div></section>
+<section class="final"><div class="wrap reveal"><div class="final-poster" id="finalPoster"></div><h2 class="display" data-t="finalTitle">RECIFE,<br><span class="accent">PREPARA-TE.</span></h2><p data-t="finalCopy">31 de outubro · 21h · Biruta Bar.</p><a class="btn btn-accent" href="#ingressos">Garantir ingresso</a><img class="footer-logo" src="/assets/gtrz-eventos.svg" alt="GTRZ Eventos"></div></section>
 </main>
 <a class="mobile-buy" href="#ingressos">Lote promocional · R$ 40</a>
-<script src="/assets/site.js?v=20260909-rebuild"></script>
-</body>
-</html>
+<script src="/assets/poster-data.js"></script><script src="/assets/site.js"></script>
+</body></html>
